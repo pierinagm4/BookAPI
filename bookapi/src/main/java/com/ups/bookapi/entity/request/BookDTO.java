@@ -2,13 +2,14 @@ package com.ups.bookapi.entity.request;
 
 import com.ups.bookapi.entity.Author;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class BookDTO {
     private Long id;
     private String title;
-    private List<Long> authorId;
+    private List<Long> authorId = new ArrayList<>();;
     private Integer year;
     private String publisher;
 

@@ -10,7 +10,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "author")
-public class Author implements Serializable {
+public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,14 +21,14 @@ public class Author implements Serializable {
     private Date birthday;
     private Integer age;
 
-    @ManyToOne
-    private Book books;
+    @ManyToMany(mappedBy = "author")
+    private List<Book> books;
 
-    public Book getBooks() {
+    public List<Book> getBooks() {
         return books;
     }
 
-    public void setBooks(Book books) {
+    public void setBooks(List<Book> books) {
         this.books = books;
     }
 
@@ -51,7 +51,9 @@ public class Author implements Serializable {
     public Date getBirthday() {
         return birthday;
     }
-
+    public void addBooks(Book book){
+        this.books.add(book);
+    }
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
@@ -91,7 +93,7 @@ public class Author implements Serializable {
         this.age = age;
     }
 
-    public Author(String name, String lastName, Date birthday, Integer age, Book books) {
+    public Author(String name, String lastName, Date birthday, Integer age, List<Book> books) {
         Name = name;
         LastName = lastName;
         this.birthday = birthday;
@@ -99,7 +101,7 @@ public class Author implements Serializable {
         this.books = books;
     }
 
-    public Author(Long id, String name, String lastName, Date birthday, Integer age, Book books) {
+    public Author(Long id, String name, String lastName, Date birthday, Integer age, List<Book> books) {
         this.id = id;
         Name = name;
         LastName = lastName;

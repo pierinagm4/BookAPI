@@ -1,6 +1,8 @@
 package com.ups.bookapi.entity.request;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class AuthorDTO {
 
@@ -9,7 +11,7 @@ public class AuthorDTO {
     private String LastName;
     private Date birthday;
     private Integer age;
-    private long bookId;
+    private List<Long> bookId= new ArrayList<>();;
 
     public Long getId() {
         return id;
@@ -51,14 +53,16 @@ public class AuthorDTO {
         this.age = age;
     }
 
-    public long getBookId() {
+    public List<Long> getBookId() {
         return bookId;
     }
 
-    public void setBookId(long bookId) {
+    public void setBookId(List<Long> bookId) {
         this.bookId = bookId;
     }
-
+    public void addBook(Long bookId){
+        this.bookId.add(bookId);
+    }
     @Override
     public String toString() {
         return "AuthorDTO{" +

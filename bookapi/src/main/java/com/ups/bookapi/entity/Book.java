@@ -9,14 +9,14 @@ import java.util.List;
 
 @Entity
 @Table(name = "book")
-public class Book implements Serializable {
+public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Nationalized
     private String title;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "books", cascade = CascadeType.ALL)
+    @ManyToMany
     private List<Author> author = new ArrayList<>();
     @Column(name = "publish_year")
     private Integer year;
@@ -46,7 +46,9 @@ public class Book implements Serializable {
     public void setAuthor(List<Author> author) {
         this.author = author;
     }
-
+    public void addAuthor(Author author){
+        this.author.add(author);
+    }
     public Integer getYear() {
         return year;
     }
@@ -77,6 +79,13 @@ public class Book implements Serializable {
     public Book(String title, List<Author> author, Integer year, String publisher) {
         this.title = title;
         this.author = author;
+        this.year = year;
+        this.publisher = publisher;
+    }
+
+    public Book(Long id, String title, Integer year, String publisher) {
+        this.id = id;
+        this.title = title;
         this.year = year;
         this.publisher = publisher;
     }
