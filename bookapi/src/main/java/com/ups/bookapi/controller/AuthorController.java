@@ -8,6 +8,7 @@ import com.ups.bookapi.service.AuthorService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -29,6 +30,14 @@ public class AuthorController {
         }
         return authors;
     }
+    @GetMapping("/author/{name}")
+    public List<AuthorDTO> getAuthorsByName(@PathVariable String name) {
+        List<AuthorDTO> authors= new ArrayList<>();
+        for(Author author:authorService.getAuthorsByName(name)){
+            authors.add(convertAuthorToAuthorDTO(author));
+        }
+        return authors;
+    }
     @PostMapping("/author")
     public AuthorDTO saveAuthor(@RequestBody AuthorDTO authorDTO) {
         Author author = new Author(authorDTO.getId(),authorDTO.getName(),authorDTO.getLastName(),authorDTO.getBirthday(),authorDTO.getAge());
@@ -40,7 +49,13 @@ public class AuthorController {
         }
         return convertedAuthor;
     }
-
+    @DeleteMapping("/author/{id}")
+    public ResponseEntity<?> deleteAuthor(@PathVariable Long id){
+        if(!authorService.deleteAuthor(id)){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Author could not be deleted");
+        }
+        return ResponseEntity.ok().build();
+    }
     private AuthorDTO convertAuthorToAuthorDTO(Author author){
         AuthorDTO authorDTO = new AuthorDTO();
         BeanUtils.copyProperties(author, authorDTO);
