@@ -22,7 +22,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="bookapi" options="-parameters" />
       <module name="gateway" options="-parameters" />
-      <module name="user" options="-parameters" />
+      <module name="user" options="-parameters --add-modules java.base" />
     </option>
   </component>
 </project>
