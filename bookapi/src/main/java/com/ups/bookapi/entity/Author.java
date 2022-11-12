@@ -21,14 +21,14 @@ public class Author implements Serializable {
     private Date birthday;
     private Integer age;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "author", cascade = CascadeType.ALL)
-    private List<Book> books = new ArrayList<>();
+    @ManyToOne
+    private Book books;
 
-    public List<Book> getBooks() {
+    public Book getBooks() {
         return books;
     }
 
-    public void setBooks(List<Book> books) {
+    public void setBooks(Book books) {
         this.books = books;
     }
 
@@ -91,7 +91,7 @@ public class Author implements Serializable {
         this.age = age;
     }
 
-    public Author(String name, String lastName, Date birthday, Integer age, List<Book> books) {
+    public Author(String name, String lastName, Date birthday, Integer age, Book books) {
         Name = name;
         LastName = lastName;
         this.birthday = birthday;
@@ -99,7 +99,7 @@ public class Author implements Serializable {
         this.books = books;
     }
 
-    public Author(Long id, String name, String lastName, Date birthday, Integer age, List<Book> books) {
+    public Author(Long id, String name, String lastName, Date birthday, Integer age, Book books) {
         this.id = id;
         Name = name;
         LastName = lastName;

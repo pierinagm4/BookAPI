@@ -4,9 +4,11 @@ import org.hibernate.annotations.Nationalized;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "books")
+@Table(name = "book")
 public class Book implements Serializable {
 
     @Id
@@ -14,8 +16,9 @@ public class Book implements Serializable {
     private Long id;
     @Nationalized
     private String title;
-    @ManyToOne
-    private Author author;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "books", cascade = CascadeType.ALL)
+    private List<Author> author = new ArrayList<>();
+    @Column(name = "publish_year")
     private Integer year;
     @Nationalized
     private String publisher;
@@ -36,11 +39,11 @@ public class Book implements Serializable {
         this.title = title;
     }
 
-    public Author getAuthor() {
+    public List<Author> getAuthor() {
         return author;
     }
 
-    public void setAuthor(Author author) {
+    public void setAuthor(List<Author> author) {
         this.author = author;
     }
 
@@ -63,7 +66,7 @@ public class Book implements Serializable {
     public Book() {
     }
 
-    public Book(Long id, String title, Author author, Integer year, String publisher) {
+    public Book(Long id, String title, List<Author> author, Integer year, String publisher) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -71,7 +74,7 @@ public class Book implements Serializable {
         this.publisher = publisher;
     }
 
-    public Book(String title, Author author, Integer year, String publisher) {
+    public Book(String title, List<Author> author, Integer year, String publisher) {
         this.title = title;
         this.author = author;
         this.year = year;
