@@ -1,7 +1,5 @@
 package com.ups.bookapi.entity.request;
 
-import com.ups.bookapi.entity.Author;
-
 import java.util.ArrayList;
 import java.util.List;
 

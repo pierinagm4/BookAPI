@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/BookAPI.iml" filepath="$PROJECT_DIR$/.idea/BookAPI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/auth_server/auth_server.iml" filepath="$PROJECT_DIR$/auth_server/auth_server.iml" />
       <module fileurl="file://$PROJECT_DIR$/bookapi/bookapi.iml" filepath="$PROJECT_DIR$/bookapi/bookapi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka/eureka.iml" filepath="$PROJECT_DIR$/eureka/eureka.iml" />
       <module fileurl="file://$PROJECT_DIR$/gateway/gateway.iml" filepath="$PROJECT_DIR$/gateway/gateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/user/user.iml" filepath="$PROJECT_DIR$/user/user.iml" />
     </modules>

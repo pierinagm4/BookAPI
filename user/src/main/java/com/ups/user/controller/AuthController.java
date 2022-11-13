@@ -1,12 +1,12 @@
 package com.ups.user.controller;
 
+import com.ups.user.dto.LoginDto;
+import com.ups.user.dto.SignUpDto;
 import com.ups.user.entity.Role;
 import com.ups.user.entity.Status;
 import com.ups.user.entity.User;
 import com.ups.user.repository.RoleRepository;
 import com.ups.user.repository.UserRepository;
-import dto.LoginDto;
-import dto.SignUpDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

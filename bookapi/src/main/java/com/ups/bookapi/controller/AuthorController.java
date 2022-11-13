@@ -3,7 +3,6 @@ package com.ups.bookapi.controller;
 import com.ups.bookapi.entity.Author;
 import com.ups.bookapi.entity.Book;
 import com.ups.bookapi.entity.request.AuthorDTO;
-import com.ups.bookapi.entity.request.BookDTO;
 import com.ups.bookapi.service.AuthorService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

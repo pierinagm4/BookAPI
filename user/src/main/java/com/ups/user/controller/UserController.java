@@ -3,13 +3,12 @@ package com.ups.user.controller;
 import com.ups.user.entity.Status;
 import com.ups.user.entity.User;
 import com.ups.user.repository.UserRepository;
-import dto.StatusChangeDto;
-import dto.UserDTO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import com.ups.user.dto.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -40,6 +39,16 @@ public class UserController {
     @GetMapping("/users/{status}")
     public List<UserDTO> getUserByStatus(@PathVariable String status){
         return convertListUserToListUserDTO(userRepository.findByStatus(Status.valueOf(status)));
+    }
+
+    @GetMapping("/find/{username}")
+    public User getUserByUser(@PathVariable String username){
+        Optional<User> userOptional = userRepository.findByUsername(username);
+        User user = new User();
+        if(userOptional.isPresent()) {
+            user = userOptional.get();
+        }
+        return user;
     }
 
 

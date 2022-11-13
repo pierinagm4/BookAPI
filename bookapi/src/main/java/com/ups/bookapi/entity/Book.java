@@ -3,7 +3,6 @@ package com.ups.bookapi.entity;
 import org.hibernate.annotations.Nationalized;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
