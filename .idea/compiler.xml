@@ -8,10 +8,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="bookapi" />
-        <module name="auth_server" />
         <module name="user" />
-        <module name="gateway" />
+        <module name="auth_server" />
         <module name="eureka" />
+        <module name="gateway" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
